@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: wheat;
+  background-color: #9fcdf3;
   font-family: "Madimi One", sans-serif;
   .heading{
     font-size: 40px;

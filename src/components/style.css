@@ -24,7 +24,7 @@
         height: 30px;
         border-radius: 50px;
         border: none;
-        background-color: wheat;
+        background-color: #9fcdf3;
         font-size: 11px;
         margin: 12px;
         box-shadow: 0 0 10px #0000008f;
@@ -39,5 +39,36 @@
     }
 }
 .todos{
-    
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.todo_single{
+    width: 29.5%;
+    display: flex;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px;
+    .todo_single--text{
+        flex: 1;
+        padding: 5px;
+        border: none;
+        font-size: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .icons_tray{
+        .icon{
+            margin-left: 10px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    }
+  
+}
+.done{
+    text-decoration: line-through;
+    opacity: 0.5;
 }
