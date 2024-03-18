@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Todo } from '../Todo'
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -26,21 +26,26 @@ const SingleTodo:React.FC<props> = ({todo, todos, setTodos}) => {
             todos.filter((todo) => todo.id !== id)
         )
     } 
-    const handleEdit = (id: number, e:React.FormEvent) => {
-       e.preventDefault();
-       setTodos(
-        todos.map((todo) => (
-            todo.id === id?{...todo,editTodo}:todo
-        ));
-        setEdit(false);
-       )
-    } 
+    const handleEdit = (e:React.FormEvent, id:number) => {
+        e.preventDefault();
+        setTodos(todos.map((todo) => (
+            todo.id === id ? {...todo,task:editTodo}:todo
+        )));
+        setEdit(false)
+    }
+
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, [edit])
+    
 
   return (
     <form className="todo_single" onSubmit={(e) => handleEdit(e,todo.id)}>
         {
             edit ? (
-                <input type="text" value={editTodo} className='todo_single--text' onChange={(e) => setEditTodo(e.target.value)}  />
+               <input value={editTodo} ref={inputRef}  className="todo_single--text" onChange={(e) => setEditTodo(e.target.value)} />
             ):(
                 todo.isDone ? (
                 <s className="todo_single--text done">
