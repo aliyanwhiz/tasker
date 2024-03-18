@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+.app{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: wheat;
+  font-family: "Madimi One", sans-serif;
+  .heading{
+    font-size: 40px;
+    text-transform: uppercase;
+    margin: 15px 0;
+    color: #555;
+    z-index: 1;
+    text-align: center;
+  }
+}
+
+@media (width: 800px) {
+  .app .heading{
+       margin: 15px 0;
+       font-size: 26px;
+     }
+}
