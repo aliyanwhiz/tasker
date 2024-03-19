@@ -2,20 +2,67 @@ import React from 'react'
 import { Todo } from '../Todo';
 import './style.css';
 import SingleTodo from './singleTodo';
+import { Droppable } from 'react-beautiful-dnd';
 
 
 interface props{
     todos:Todo[];
     setTodos:React.Dispatch<React.SetStateAction<Todo[]>>;
+    completedTodos: Todo[];
+    setCompletedTodos:React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoList:React.FC<props> = ({todos, setTodos}) => {
+const TodoList:React.FC<props> = ({todos, setTodos,completedTodos, setCompletedTodos}) => {
   return (
-    <div className="todos">
-        {todos.map((todo) => (
-            <SingleTodo key={todo.id}  todo={todo} todos={todos}  setTodos={setTodos}  />
+    <div className="container">
+     <Droppable droppableId='Todolist'>
+      {
+        (provided) => (
+          <div className="todos" 
+            ref={provided.innerRef} 
+            {...provided.droppableProps}>
+            <span className="todos_heading">
+              Active Tasks
+            </span>
+              {todos.map((todo,index) => (
+                  <SingleTodo 
+                    index={index}
+                    key={todo.id}  
+                    todo={todo} 
+                    todos={todos}  
+                    setTodos={setTodos} 
+                  />
+              ))}
+              {provided.placeholder}
+          </div>
+        )
+      }
+     </Droppable>
+     <Droppable droppableId='RemoveTodo'>
+      {
+        (provided) => (
+     <div className="todos remove" 
+      ref={provided.innerRef} 
+      {...provided.droppableProps}>
+      <span className="todos_heading">
+        Completed Tasks
+      </span>
+        {completedTodos.map((todo,index) => (
+            <SingleTodo 
+              index={index}
+              key={todo.id}  
+              todo={todo} 
+              todos={completedTodos}  
+              setTodos={setCompletedTodos}  
+            />
         ))}
+        {provided.placeholder}
     </div>
+        )
+      }
+     </Droppable>
+
+   </div>
   )
 }
 

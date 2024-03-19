@@ -17,7 +17,7 @@ const InputField = ({todo, setTodo, handleAdd}:props) => {
         <input type="text" value={todo} ref={inputRef} onChange={
             (e) => setTodo(e.target.value)
         } className='input_field' placeholder="Enter your task here..." />
-        <button className='input_button' type='submit'>Go</button>
+        <button className='input_button' type='submit'>Add</button>
     </form>
   )
 }
