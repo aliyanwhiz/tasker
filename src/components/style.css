@@ -97,3 +97,12 @@
     text-decoration: line-through;
     opacity: 0.5;
 }
+.dragactive{
+    background-color: aqua;
+}
+.dragcomplete{
+    background-color: red;
+}
+.dragging{
+    box-shadow: 0 0 20px #000;
+}
