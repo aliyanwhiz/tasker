@@ -41,7 +41,7 @@ const TodoList:React.FC<props> = ({todos, setTodos,completedTodos, setCompletedT
      <Droppable droppableId='RemoveTodo'>
       {
         (provided, snapshot) => (
-     <div className={`todos remove ${snapshot.isDraggingOver? "dragcomplete" : ""}`} 
+     <div className={`todos remove ${snapshot.isDraggingOver? "dragcomplete done" : ""}`} 
       ref={provided.innerRef} 
       {...provided.droppableProps}>
       <span className="todos_heading">
