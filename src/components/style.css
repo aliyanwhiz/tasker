@@ -57,6 +57,10 @@
 }
 .remove{
     background-color: rgb(163, 64, 64);
+     .todo_single--text{
+       text-decoration: line-through;
+       opacity: 0.5;
+    }
 }
 .todos_heading{
     color: wheat;
